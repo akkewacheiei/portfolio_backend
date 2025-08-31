@@ -20,12 +20,10 @@ jobs:
 
       - name: Deploy backend to server
         run: |
-          rsync -avz --delete \
-          -e "ssh -o StrictHostKeyChecking=no" \
-          ./ root@${{ secrets.SERVER_IP }}:/var/www/portfolio_backend/
-
           ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_IP }} << 'EOF'
             cd /var/www/portfolio_backend
+            git reset --hard
+            git pull origin main
             npm install
-            pm2 restart backend || pm2 start server.js --name backend
+            pm2 restart portfolio_backend || pm2 start server.js --name portfolio_backend
           EOF
