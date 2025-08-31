@@ -24,6 +24,6 @@ jobs:
             cd /var/www/portfolio_backend
             git reset --hard
             git pull origin main
-            npm install
-            pm2 restart portfolio_backend || pm2 start server.js --name portfolio_backend
+            docker-compose down
+            docker-compose up -d --build
           EOF
