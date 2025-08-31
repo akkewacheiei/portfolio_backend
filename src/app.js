@@ -21,7 +21,7 @@ mongoose
 
 // Test route
 app.get("/", (req, res) => {
-  res.json({ message: "Backend is running!!!! V.5 🚀" });
+  res.json({ message: "Backend is running!!!! V.6 🚀" });
 });
 
 export default app;
